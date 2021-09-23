@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+<!--    <script src="../src/index.js"></script>-->
+</head>
+<body>
+
+    <div id="app">
+        {{count}}
+        <k-button></k-button>
+    </div>
+
+
+    <script>
+
+        const KButton = {
+            name: 'KButton',
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>',
+        }
+
+        KButton.install = function (Vue) {
+            Vue.component(KButton.name, KButton);
+        }
+
+        Vue.use(KButton);
+
+        //
+        // const MyHttpServer = {}
+        //
+        // MyHttpServer.install = (Vue) => {
+        //     console.log("Vue", Vue);
+        //     console.log("Vue", Vue.component(KButton.name, KButton));
+        //
+        //     //添加实例方法
+        //     Vue.prototype.$http = axios
+        //
+        // }
+        //
+        // Vue.use(MyHttpServer)
+
+/*      方法二
+        Vue.component('k-button', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        })
+*/
+
+        new Vue({
+            data: {
+                count: 0
+            },
+            // template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        }).$mount('#app');;
+    </script>
+</body>
+</html>
